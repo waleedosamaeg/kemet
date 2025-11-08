@@ -1,0 +1,31 @@
+@font-face {
+    font-family: "quicksand";
+    src: url("../fonts/Quicksand/Quicksand-VariableFont_wght.ttf");
+}
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+:root  { 
+    --header-bg : rgba(0, 0, 0, 0.715);
+    --ess-color : tomato;
+    --gold-color : rgba(255, 217, 0, 0.895);
+}
+#root { 
+    position: absolute;
+    inset : 0;
+    background: url("../imgs/bg.jpg") no-repeat top/cover fixed #000 ;
+    background-size: 100% 80%;
+    /* background-size :cover; */
+    overflow-x: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    color :#fff;
+    gap : 20px;
+    font-family: "quicksand";
+    
+    
+}
