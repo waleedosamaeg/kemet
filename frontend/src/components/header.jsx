@@ -1,12 +1,18 @@
 import {  Link } from "react-router-dom";
 import "@css/header.css"
+import {useApp} from "@context/appContext.jsx";
+import {useEffect} from "react"
 function Header() {
+    
+    const {state } = useApp()
+
+    
     return (
         <>
-        <headr className = 'header'>
+        <header className = 'header'>
             <Link to = "/"id = 'logo'><span className = 'ankh'>☥</span> {(import.meta.env.VITE_APPNAME).toUpperCase()} <span className = 'ankh'>☥</span></Link>
             <nav >
-                    <Link to="/register" className = "item" >Register </Link>
+                    <Link to="/register" className = "item" >REGISTER </Link>
                     <span className='separator'>☥</span>
                     <Link to="/download" className = "item" >DOWNLOAD </Link>
                     <span className='separator'>☥</span>
@@ -16,7 +22,8 @@ function Header() {
                     <span className='separator'>☥</span>
                     <Link to="/contact" className = "item" >CONTACT US</Link>
             </nav>
-        </headr>
+            <div className = 'profile'>{state.is_logged ? <Link to="/contact" className = "item" >Wellcome</Link>:null}</div>
+        </header>
         </>
     )
 }
