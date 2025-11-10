@@ -1,11 +1,40 @@
 import {  Link } from "react-router-dom";
 import "@css/header.css"
 import {useApp} from "@context/appContext.jsx";
-import {useEffect} from "react"
-function Header() {
-    
-    const {state } = useApp()
+import { Dropdown, Avatar , Badge  , Button} from 'rsuite';
+import { IoLogIn } from "react-icons/io5";
 
+const Panel = ({nickname})=>{
+    return (
+         <div className  = "avatar">
+            <Badge  style={{ background: '#4caf50' }}/>
+                            <Dropdown   className = 'panel' style  = {{ }} title = {"Account Panel"} placement="bottomEnd" >
+                                <Dropdown.Item panel style={{ padding: 10, width: 150 }}>
+                                    <p>Wellcome</p>
+                                    <strong>@{nickname || 'unknown' }</strong>
+                                </Dropdown.Item>
+                                <Dropdown.Separator />
+                                <Dropdown.Item>Profile</Dropdown.Item>
+                                <Dropdown.Item>Prauchase Histroy</Dropdown.Item>
+                                <Dropdown.Separator />
+                                
+                                <Dropdown.Item>Change Password</Dropdown.Item>
+                                <Dropdown.Item>Change Email</Dropdown.Item>
+                                <Dropdown.Separator />
+                                <Dropdown.Item>Sign out</Dropdown.Item>
+                            
+                            </Dropdown>
+            </div>
+
+    )
+}
+
+function Header() {
+ 
+
+    const {state } = useApp()
+   
+    
     
     return (
         <>
@@ -22,7 +51,8 @@ function Header() {
                     <span className='separator'>☥</span>
                     <Link to="/contact" className = "item" >CONTACT US</Link>
             </nav>
-            <div className = 'profile'>{state.is_logged ? <Link to="/contact" className = "item" >Wellcome</Link>:null}</div>
+                {state.is_logged ? <Panel profile = {state.profile} /> : <Button  color="orange" startIcon = {<IoLogIn  size={"20"}/>} appearance="primary">LOGIN</Button>}
+
         </header>
         </>
     )
